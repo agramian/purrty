@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    // library release and versioning values
+    libBuildNumber = 1
+    libVersionString = '1.0.0'
+    developerName = 'Abtin Gramian'
+    repoName = 'purtee'
+    grpPkg ='com.abtingramian.purtee'
+    grpPkgName = 'Purtee'
+    grpPkgVersion ='0.1.0'
+    grpPkgDescShort = "${grpPkgName} ${grpPkgVersion}"
+    grpPkgDescLong = "Shape Drawable with Border for Android"
+    siteUrl = 'https://github.com/agramian/shape-drawable-with-border'
+    gitUrl = "${siteUrl}.git"
+    licenseName = 'MIT'
+    licenseUrl = "${siteUrl}/blob/master/LICENSE"
+    firstPublishYear = '2016'
+
+    // sample release and versioning values
+    sampleBuildNumber = 1
+    sampleVersionString = '1.0.0'
+
+    // build and sdk values
+    minSdkVersion = 14
+    compileSdkVersion = 26
+    targetSdkVersion = compileSdkVersion
+    buildToolsVersion = '26.0.0'
+
+    // dependency version declarations for interpolation
+    supportLibVer = '25.4.0'
+    supportTestLibVer = '0.5'
+    junitLibVer = '4.12'
+}
