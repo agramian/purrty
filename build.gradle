@@ -26,21 +26,30 @@ task clean(type: Delete) {
 }
 
 ext {
-    // library release and versioning values
+    // general library release and versioning values
     libBuildNumber = 1
     libVersionString = '1.0.0'
     developerName = 'Abtin Gramian'
     repoName = 'purtee'
     grpPkg ='com.abtingramian.purtee'
-    grpPkgName = 'Purtee'
     grpPkgVersion ='0.1.0'
-    grpPkgDescShort = "${grpPkgName} ${grpPkgVersion}"
-    grpPkgDescLong = "Shape Drawable with Border for Android"
-    siteUrl = 'https://github.com/agramian/shape-drawable-with-border'
+    siteUrl = 'https://github.com/agramian/purtee'
     gitUrl = "${siteUrl}.git"
     licenseName = 'MIT'
     licenseUrl = "${siteUrl}/blob/master/LICENSE"
-    firstPublishYear = '2016'
+    firstPublishYear = '2017'
+
+    // individual library release and versioning values
+
+    // shapedrawablewithborder
+    shapeGrpPkgName = 'Purtee'
+    shapeGrpPkgDescShort = "${shapeGrpPkgName} ${grpPkgVersion}"
+    shapeGrpPkgDescLong = "Shape Drawable with Border for Android"
+
+    // util
+    utilGrpPkgName = 'Purtee'
+    utilGrpPkgDescShort = "${utilGrpPkgName} ${grpPkgVersion}"
+    utilGrpPkgDescLong = "UI Utils for Android"
 
     // sample release and versioning values
     sampleBuildNumber = 1

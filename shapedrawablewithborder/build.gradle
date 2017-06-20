@@ -47,14 +47,14 @@ generateJavaDocsJar.dependsOn generateJavaDocs
 install {
     repositories.mavenInstaller {
         pom.project {
-            name rootProject.ext.grpPkgName
-            description rootProject.ext.grpPkgDescLong
+            name rootProject.ext.shapeGrpPkgName
+            description rootProject.ext.shapeGrpPkgDescLong
             url rootProject.ext.siteUrl
             inceptionYear rootProject.ext.firstPublishYear
 
             packaging 'aar'
             groupId rootProject.ext.grpPkg
-            artifactId rootProject.ext.grpPkgName
+            artifactId rootProject.ext.shapeGrpPkgName
             version rootProject.ext.grpPkgVersion
 
             licenses {
@@ -91,7 +91,7 @@ bintray {
         websiteUrl = rootProject.ext.siteUrl
         version {
             name = rootProject.ext.grpPkgVersion
-            desc = rootProject.ext.grpPkgDescShort
+            desc = rootProject.ext.shapeGrpPkgDescShort
             vcsTag = rootProject.ext.grpPkgVersion
             released  = new Date()
             attributes = ['gradle-plugin': rootProject.ext.grpPkg]

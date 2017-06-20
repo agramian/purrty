@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.abtingramian.shapedrawablewithborder.ShapeDrawableWithBorder;
+import shapedrawablewithborder.ShapeDrawableWithBorder;
 
 public class MainActivity extends AppCompatActivity {
 

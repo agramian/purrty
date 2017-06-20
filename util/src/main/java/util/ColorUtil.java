@@ -1,4 +1,4 @@
-package com.abtingramian.util;
+package util;
 
 import android.graphics.Color;
 import android.support.v4.graphics.ColorUtils;
