@@ -1,4 +1,4 @@
-package shapedrawablewithborder;
+package com.abtingramian.purtee.shapedrawablewithborder;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;

@@ -1,0 +1,37 @@
+project.ext {
+    submodules = ['shapedrawablewithborder', 'util']
+
+    // general library release and versioning values
+    libBuildNumber = 1
+    libVersionString = '0.1.0'
+    developerId = 'agramian'
+    developerName = 'Abtin Gramian'
+    developerEmail = 'abtin.gramian@gmail.com'
+    organizationName = developerId
+    organizationUrl = 'https://github.com/agramian'
+    grpPkg = 'abtingramian'
+    group = "com.${grpPkg}"
+    version = libVersionString
+    baseName = 'purtee'
+    repoName = 'purtee'
+    url = 'github.com/agramian/purtee'
+    repoUrl = "https://$url"
+    gitUrl = "${repoUrl}.git"
+    scmUrl = "scm:git:git@${url}.git"
+    licenseName = 'MIT'
+    licenseUrl = "${repoUrl}/blob/master/LICENSE"
+    firstPublishYear = '2017'
+    descriptionLong = 'Miscellaneous Android UI Library'
+    descriptionShort = "${grpPkg} ${libVersionString}"
+
+    // build and sdk values
+    minSdk = 14
+    compileSdk = 26
+    targetSdk = compileSdk
+    buildTools = '26.0.0'
+
+    // dependency version declarations for interpolation
+    supportLibVer = '25.4.0'
+    supportTestLibVer = '0.5'
+    junitLibVer = '4.12'
+}

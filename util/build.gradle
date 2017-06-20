@@ -1,18 +1,14 @@
-plugins {
-    id "com.jfrog.bintray" version "1.7"
-    id "com.github.dcendents.android-maven" version "1.5"
-}
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion compileSdk
+    buildToolsVersion buildTools
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.libBuildNumber
-        versionName "$rootProject.ext.grpPkgVersion"
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode libBuildNumber
+        versionName libVersionString
     }
     buildTypes {
         release {
@@ -25,82 +21,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(":shapedrawablewithborder")
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVer"
-}
-
-task generateSourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier 'sources'
-}
-
-task generateJavaDocs(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath()
-            .join(File.pathSeparator))
-}
-
-task generateJavaDocsJar(type: Jar) {
-    from generateJavaDocs.destinationDir
-    classifier 'javadoc'
-}
-generateJavaDocsJar.dependsOn generateJavaDocs
-
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            name rootProject.ext.utilGrpPkgName
-            description rootProject.ext.utilGrpPkgDescLong
-            url rootProject.ext.siteUrl
-            inceptionYear rootProject.ext.firstPublishYear
-
-            packaging 'aar'
-            groupId rootProject.ext.grpPkg
-            artifactId rootProject.ext.utilGrpPkgName
-            version rootProject.ext.grpPkgVersion
-
-            licenses {
-                license {
-                    name rootProject.ext.licenseName
-                    url rootProject.ext.licenseUrl
-                    distribution 'repo'
-                }
-            }
-            scm {
-                connection rootProject.ext.gitUrl
-                url rootProject.ext.siteUrl
-
-            }
-            developers {
-                developer {
-                    name rootProject.ext.developerName
-                }
-            }
-        }
-    }
-}
-
-bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    configurations = ['archives']
-    pkg {
-        repo = 'maven'
-        name = rootProject.ext.repoName
-        userOrg = user
-        licenses = [rootProject.ext.licenseName]
-        vcsUrl = rootProject.ext.gitUrl
-        websiteUrl = rootProject.ext.siteUrl
-        version {
-            name = rootProject.ext.grpPkgVersion
-            desc = rootProject.ext.utilGrpPkgDescShort
-            vcsTag = rootProject.ext.grpPkgVersion
-            released  = new Date()
-            attributes = ['gradle-plugin': rootProject.ext.grpPkg]
-        }
-    }
-}
-
-artifacts {
-    archives generateJavaDocsJar
-    archives generateSourcesJar
+    compile "com.android.support:appcompat-v7:$supportLibVer"
 }

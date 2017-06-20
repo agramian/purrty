@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion compileSdk
+    buildToolsVersion buildTools
 
     defaultConfig {
-        applicationId "com.abtingramian.app"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.sampleBuildNumber
-        versionName "$rootProject.ext.sampleVersionString"
+        applicationId "com.abtingramian.purteedemo"
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode libBuildNumber
+        versionName libVersionString
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -39,13 +39,13 @@ dependencies {
     compile project(":shapedrawablewithborder")
 
     // local unit tests
-    testCompile "junit:junit:$rootProject.ext.junitLibVer"
+    testCompile "junit:junit:$junitLibVer"
 
     // instrumentation tests
-    androidTestCompile "com.android.support.test:runner:$rootProject.ext.supportTestLibVer"
-    androidTestCompile "com.android.support.test:rules:$rootProject.ext.supportTestLibVer"
-    androidTestCompile "com.android.support:support-annotations:$rootProject.ext.supportLibVer"
+    androidTestCompile "com.android.support.test:runner:$supportTestLibVer"
+    androidTestCompile "com.android.support.test:rules:$supportTestLibVer"
+    androidTestCompile "com.android.support:support-annotations:$supportLibVer"
 
     // android support
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVer"
+    compile "com.android.support:appcompat-v7:$supportLibVer"
 }

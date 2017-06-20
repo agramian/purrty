@@ -1,4 +1,4 @@
-package util;
+package com.abtingramian.purtee.util;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -12,7 +12,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import shapedrawablewithborder.ShapeDrawableWithBorder;
+import com.abtingramian.purtee.shapedrawablewithborder.ShapeDrawableWithBorder;
 
 public class RippleUtil {
 
