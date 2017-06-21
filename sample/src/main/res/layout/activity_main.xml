@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    android:weightSum="2"
     android:gravity="center">
+
+    <com.abtingramian.purtee.coachmarks.CoachMarks
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="#FFF"
+        android:text="Circle"/>
 
     <FrameLayout
         android:id="@+id/circle"
         android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="16dp"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"/>
 
-    <FrameLayout
-        android:id="@+id/triangle"
-        android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/triangle"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="16dp"/>
+
+        <com.abtingramian.purtee.coachmarks.CoachMarks
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:custom_layout="@layout/coach_marks_layout"
+            app:tip_side="LEFT"/>
+
+    </LinearLayout>
 
 </LinearLayout>

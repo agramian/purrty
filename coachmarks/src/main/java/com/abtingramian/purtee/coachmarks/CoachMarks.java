@@ -225,7 +225,7 @@ public class CoachMarks extends FrameLayout {
         if (tipLocationFromEnd > 0) {
             midwayX = tipLocationFromEnd;
             midwayY = tipLocationFromEnd;
-        } else if (tipLocationFromEnd < 0){
+        } else if (tipLocationFromEnd < 0) {
             midwayX = width + tipLocationFromEnd;
             midwayY = height + tipLocationFromEnd;
         }
