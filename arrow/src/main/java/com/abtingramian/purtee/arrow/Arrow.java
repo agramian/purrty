@@ -2,6 +2,7 @@ package com.abtingramian.purtee.arrow;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -10,6 +11,7 @@ import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.support.annotation.ArrayRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.IntegerRes;
@@ -20,10 +22,28 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.abtingramian.purtee.util.PathEffectUtil;
+
 /**
  * This is a custom view which draws an arrow between two points.
  */
 public class Arrow extends View {
+
+    private enum PATH_EFFECT {
+        NONE(0), DASH_PATH(1);
+        int id;
+
+        PATH_EFFECT(int id) {
+            this.id = id;
+        }
+
+        static PATH_EFFECT fromId(int id) {
+            for (PATH_EFFECT f : values()) {
+                if (f.id == id) return f;
+            }
+            return NONE;
+        }
+    }
 
     private final Path path = new Path();
     private final Path arrow = new Path();
@@ -43,9 +63,11 @@ public class Arrow extends View {
     private Paint.Style arrowStyle = Paint.Style.STROKE;
     private PathEffect linePathEffect;
     private PathEffect arrowPathEffect;
-    private @DimenRes int strokeWidthResId = R.dimen.arrow_stroke_width;
+    private @DimenRes int strokeWidthResId = R.dimen.stroke_width;
     private @DimenRes int arrowSizeResId  = R.dimen.arrow_size;
     private float arrowRotationDegrees = 0f;
+    private PATH_EFFECT pathEffect;
+    private @ArrayRes int dashPathIntervalArrayResId;
 
     public Arrow(Context context) {
         super(context);
@@ -53,6 +75,22 @@ public class Arrow extends View {
 
     public Arrow(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        TypedArray customAttrs = context.obtainStyledAttributes(attrs, R.styleable.Arrow);
+        try {
+            startPoint = new PointF(customAttrs.getDimension(R.styleable.Arrow_start_x, 0), customAttrs.getDimension(R.styleable.Arrow_start_y, 0));
+            endPoint = new PointF(customAttrs.getDimension(R.styleable.Arrow_end_x, 0), customAttrs.getDimension(R.styleable.Arrow_end_y, 0));
+            curvature = customAttrs.getFloat(R.styleable.Arrow_curvature, 0);
+            strokeWidth = customAttrs.getDimension(R.styleable.Arrow_stroke_width, getResources().getDimension(R.dimen.stroke_width));
+            arrowSize = customAttrs.getDimension(R.styleable.Arrow_arrow_size, getResources().getDimension(R.dimen.arrow_size));
+            lineColor = customAttrs.getColor(R.styleable.Arrow_line_color, Color.BLACK);
+            arrowColor = customAttrs.getColor(R.styleable.Arrow_arrow_color, Color.BLACK);
+            arrowRotationDegrees = customAttrs.getFloat(R.styleable.Arrow_arrow_rotation_degrees, 0);
+            pathEffect = PATH_EFFECT.fromId(customAttrs.getInt(R.styleable.Arrow_path_effect, 0));
+            dashPathIntervalArrayResId = customAttrs.getResourceId(R.styleable.Arrow_dash_path_interval_array, R.array.dash_path_intervals);
+        } finally {
+            customAttrs.recycle();
+        }
+        init();
     }
 
     @Override
@@ -89,6 +127,13 @@ public class Arrow extends View {
             linePaint.setStyle(lineStyle);
             if (linePathEffect != null) {
                 linePaint.setPathEffect(linePathEffect);
+            } else {
+                switch (pathEffect) {
+                    case DASH_PATH:
+                        linePaint.setPathEffect(new PathEffectUtil.DashPathEffectBuilder(getContext())
+                                .intervalsFromDimenResIdArray(dashPathIntervalArrayResId)
+                                .build());
+                }
             }
         }
         // set up arrow paint if necessary

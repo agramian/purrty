@@ -7,7 +7,5 @@
     <integer-array name="dash_path_intervals">
         <item>4</item>
         <item>8</item>
-        <item>16</item>
-        <item>32</item>
     </integer-array>
 </resources>

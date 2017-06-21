@@ -19,5 +19,6 @@ android {
 }
 
 dependencies {
+    compile project(":util")
     compile "com.android.support:appcompat-v7:$supportLibVer"
 }

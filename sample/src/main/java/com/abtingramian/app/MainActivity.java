@@ -15,6 +15,7 @@ import android.view.View;
 
 import com.abtingramian.purtee.arrow.Arrow;
 import com.abtingramian.purtee.shapedrawablewithborder.ShapeDrawableWithBorder;
+import com.abtingramian.purtee.util.DimensionUtil;
 import com.abtingramian.purtee.util.PathEffectUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
                         .lineColorRes(R.color.colorPrimary)
                         .arrowRotationDegrees(180f)
                         .linePathEffect(new PathEffectUtil.DashPathEffectBuilder(MainActivity.this)
-                                .intervalsFromDimenResIdArray(R.array.dash_path_intervals)
+                                .addInterval(DimensionUtil.dpToPx(MainActivity.this, 4))
+                                .addInterval(DimensionUtil.dpToPx(MainActivity.this, 8))
                                 .build())
                         .build()
                         .show(MainActivity.this);

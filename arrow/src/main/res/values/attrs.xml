@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="path_effect" format="enum">
+        <enum name="NONE" value="0" />
+        <enum name="DASH_PATH" value="1" />
+    </attr>
+    <declare-styleable name="Arrow">
+        <attr name="start_x" format="dimension"/>
+        <attr name="start_y" format="dimension"/>
+        <attr name="end_x" format="dimension"/>
+        <attr name="end_y" format="dimension"/>
+        <attr name="curvature" format="float"/>
+        <attr name="stroke_width" format="dimension"/>
+        <attr name="arrow_size" format="dimension"/>
+        <attr name="line_color" format="color"/>
+        <attr name="arrow_color" format="color"/>
+        <attr name="arrow_rotation_degrees" format="float"/>
+        <attr name="path_effect"/>
+        <attr name="dash_path_interval_array" format="reference"/>
+    </declare-styleable>
+</resources>
