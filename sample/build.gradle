@@ -35,7 +35,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(":library")
 
     // local unit tests
