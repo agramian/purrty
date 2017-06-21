@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="tip_side" format="enum">
+        <enum name="LEFT" value="0" />
+        <enum name="RIGHT" value="1" />
+        <enum name="TOP" value="2" />
+        <enum name="BOTTOM" value="3" />
+    </attr>
+    <declare-styleable name="CoachMarks">
+        <attr name="box_color" format="color" />
+        <attr name="direction" format="string" />
+        <attr name="point_height" format="dimension" />
+        <attr name="point_width" format="dimension" />
+        <attr name="corner_radius" format="dimension" />
+        <attr name="custom_layout" format="reference" />
+        <attr name="tip_location_from_end" format="dimension" />
+        <attr name="tip_side"/>
+        <attr name="shadow" format="boolean" />
+    </declare-styleable>
+</resources>
