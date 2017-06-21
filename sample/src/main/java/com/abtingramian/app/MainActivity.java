@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 new Arrow.Builder(MainActivity.this)
                         .startPoint(new PointF(circleRect.left, circleRect.exactCenterY()))
                         .endPoint(new PointF(triangleRect.exactCenterX(), triangleRect.top))
+                        .arrowColor(Color.GREEN)
+                        .lineColorRes(R.color.colorPrimary)
+                        .arrowRotationDegrees(180f)
                         .build()
                         .show(MainActivity.this);
             }
