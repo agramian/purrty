@@ -13,10 +13,11 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         maven {
             url "https://maven.google.com"
         }
+        jcenter()
+        mavenCentral()
     }
 }
 
@@ -44,7 +45,7 @@ allprojects { project ->
     // like the list of submodules or the version
     project.apply from: "$rootDir/constants.gradle"
 
-    def isLibrary = 'library'.equals(project.name)
+    def isLibrary = 'library' == project.name
     def isSubmodule = submodules.contains(project.name)
 
     if (isSubmodule || isLibrary) {
@@ -237,14 +238,14 @@ allprojects { project ->
         def publicationName = isLibrary ? 'monolithLibrary' : "${project.name}Library"
         def pomLoc = isLibrary ? "$buildDir/publications/monolithLibrary/pom-default.xml" : "$buildDir/publications/${project.name}Library/pom-default.xml"
 
-        group = group
-        version = version
+        group = project.ext.group
+        version = project.ext.version
 
-        def versionName = version
+        def versionName = project.ext.version
 
         bintray {
             user = hasProperty('BINTRAY_USER') ? getProperty('BINTRAY_USER') : System.getenv('BINTRAY_USER')
-            key = hasProperty('BINTRAY_KEY') ? getProperty('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
+            key = hasProperty('BINTRAY_API_KEY') ? getProperty('BINTRAY_API_KEY') : System.getenv('BINTRAY_API_KEY')
             publications = [publicationName]
 
             filesSpec {
@@ -267,10 +268,6 @@ allprojects { project ->
 
                 version {
                     name = versionName
-                    desc = descriptionShort
-                    vcsTag = libVersionString
-                    released  = new Date()
-                    attributes = ['gradle-plugin': grpPkg]
                 }
             }
         }

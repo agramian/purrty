@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode libBuildNumber
-        versionName libVersionString
+        versionCode 1
+        versionName '1.0.0'
     }
     buildTypes {
         release {

@@ -2,8 +2,6 @@ project.ext {
     submodules = ['shapedrawablewithborder', 'util']
 
     // general library release and versioning values
-    libBuildNumber = 1
-    libVersionString = '0.1.0'
     developerId = 'agramian'
     developerName = 'Abtin Gramian'
     developerEmail = 'abtin.gramian@gmail.com'
@@ -11,7 +9,7 @@ project.ext {
     organizationUrl = 'https://github.com/agramian'
     grpPkg = 'abtingramian'
     group = "com.${grpPkg}"
-    version = libVersionString
+    version = '0.1.0'
     baseName = 'purtee'
     repoName = 'purtee'
     url = 'github.com/agramian/purtee'
@@ -22,7 +20,7 @@ project.ext {
     licenseUrl = "${repoUrl}/blob/master/LICENSE"
     firstPublishYear = '2017'
     descriptionLong = 'Miscellaneous Android UI Library'
-    descriptionShort = "${grpPkg} ${libVersionString}"
+    descriptionShort = "${grpPkg} ${version}"
 
     // build and sdk values
     minSdk = 14

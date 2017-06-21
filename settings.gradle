@@ -1,1 +1,1 @@
-include ':sample', ':shapedrawablewithborder', ':util'
+include ':sample', ':library', ':shapedrawablewithborder', ':util'

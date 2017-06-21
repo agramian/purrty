@@ -8,8 +8,8 @@ android {
         applicationId "com.abtingramian.purteedemo"
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode libBuildNumber
-        versionName libVersionString
+        versionCode 1
+        versionName '1.0.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
