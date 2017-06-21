@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="arrow_stroke_width">2dp</dimen>
+    <dimen name="arrow_interval_on">6dp</dimen>
+    <dimen name="arrow_interval_off">2dp</dimen>
+    <dimen name="arrow_size">8dp</dimen>
+</resources>
