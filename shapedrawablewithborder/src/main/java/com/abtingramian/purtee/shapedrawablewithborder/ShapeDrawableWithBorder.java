@@ -7,6 +7,9 @@ import android.graphics.RectF;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.Shape;
 
+/**
+ * This is a custom {@link ShapeDrawable} which can have a border specified.
+ */
 public class ShapeDrawableWithBorder extends ShapeDrawable {
 
     private Paint strokePaint;

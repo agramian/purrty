@@ -23,6 +23,9 @@ import com.abtingramian.purtee.shapedrawablewithborder.ShapeDrawableWithBorder;
 import com.abtingramian.purtee.util.RippleUtil;
 import com.abtingramian.purtee.util.ViewUtil;
 
+/**
+ * This is a custom view for drawing a coach marks/tip box ui element.
+ */
 public class CoachMarks extends FrameLayout {
 
     private static final int POINT_SIZE_DEFAULT_DP = 20;

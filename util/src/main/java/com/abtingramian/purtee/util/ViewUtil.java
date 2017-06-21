@@ -6,6 +6,9 @@ import android.view.View;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
+/**
+ * Helper class for manipulating and performing common/generic actions on views.
+ */
 public class ViewUtil {
 
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);

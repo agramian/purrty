@@ -14,6 +14,9 @@ import android.view.View;
 
 import com.abtingramian.purtee.shapedrawablewithborder.ShapeDrawableWithBorder;
 
+/**
+ * Helper class for programmatically setting a {@link RippleDrawable} for a views background.
+ */
 public class RippleUtil {
 
     public static void setBackgroundCompat(View view,

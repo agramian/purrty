@@ -7,6 +7,9 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+/**
+ * Helper class for getting display-related info.
+ */
 public class DisplayUtil {
 
     public static int getDisplayDensityDp(@NonNull Context context) {

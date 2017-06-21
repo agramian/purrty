@@ -3,6 +3,10 @@ package com.abtingramian.purtee.util;
 import android.graphics.Color;
 import android.support.v4.graphics.ColorUtils;
 
+
+/**
+ * Helper class for manipulating and calculating color values.
+ */
 public class ColorUtil {
 
     public static int applyAlpha(int color, int alpha) {

@@ -3,6 +3,9 @@ package com.abtingramian.purtee.util;
 import android.content.Context;
 import android.util.TypedValue;
 
+/**
+ * Helper class for making dimension-related calculations.
+ */
 public class DimensionUtil {
 
     public static int dpToPx(Context context, float dp) {
