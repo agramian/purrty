@@ -10,6 +10,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.view.View;
 
 import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
@@ -52,11 +53,7 @@ public class RippleUtil {
                                            int borderWidth,
                                            float alpha) {
         Drawable drawable = getBackgroundCompat(view.getContext(), shapeDrawable, layerDrawable, colorMain, colorBorder, colorRipple, cornerRadius, borderWidth, alpha);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view.setBackground(drawable);
-        } else {
-            view.setBackgroundDrawable(drawable);
-        }
+        ViewCompat.setBackground(view, drawable);
     }
 
     private static Drawable getBackgroundCompat(Context context,
