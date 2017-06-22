@@ -97,14 +97,17 @@ public class Arrow extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // draw line curve
+        path.reset();
         path.moveTo(startPoint.x, startPoint.y);
         path.quadTo(controlPoint.x, controlPoint.y, endPoint.x, endPoint.y);
         canvas.drawPath(path, linePaint);
         // draw arrow
+        arrow.reset();
         arrow.moveTo(endPoint.x - arrowSize, endPoint.y);
         arrow.rLineTo(arrowSize, -arrowSize);
         arrow.rLineTo(arrowSize, arrowSize);
         arrow.computeBounds(arrowBounds, true);
+        arrowRotationMatrix.reset();
         arrowRotationMatrix.postRotate(arrowRotationDegrees, arrowBounds.centerX(), arrowBounds.centerY());
         arrow.transform(arrowRotationMatrix);
         canvas.drawPath(arrow, arrowPaint);
