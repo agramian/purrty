@@ -103,7 +103,7 @@ task testAll(dependsOn: [testTasks()]) {
 
 afterEvaluate {
     /**
-     * Prepare artifacts for this an all sub-projects.
+     * Prepare artifacts for this and all sub-projects.
      */
     task prepareArtifacts(dependsOn: [
             javadocJar,
