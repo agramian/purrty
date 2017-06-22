@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <com.abtingramian.purtee.coachmarks.CoachMarks
+        <com.abtingramian.purrty.coachmarks.CoachMarks
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:gravity="center"
@@ -40,7 +40,7 @@
                 android:layout_height="100dp"
                 android:layout_marginRight="16dp"/>
 
-            <com.abtingramian.purtee.coachmarks.CoachMarks
+            <com.abtingramian.purrty.coachmarks.CoachMarks
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -51,7 +51,7 @@
 
     </LinearLayout>
 
-    <com.abtingramian.purtee.arrow.Arrow
+    <com.abtingramian.purrty.arrow.Arrow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:start_x="275dp"

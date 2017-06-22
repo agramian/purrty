@@ -9,10 +9,10 @@ project.ext {
     organizationUrl = 'https://github.com/agramian'
     grpPkg = 'abtingramian'
     group = "com.${grpPkg}"
-    version = '0.2.0'
-    baseName = 'purtee'
-    repoName = 'purtee'
-    url = 'github.com/agramian/purtee'
+    version = '0.1.0'
+    baseName = 'purrty'
+    repoName = 'purrty'
+    url = 'github.com/agramian/purrty'
     repoUrl = "https://$url"
     gitUrl = "${repoUrl}.git"
     scmUrl = "scm:git:git@${url}.git"

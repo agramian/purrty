@@ -1,4 +1,4 @@
-# Purtee
+# Purrty
 Miscellaneous Android UI Library
 
 ### Included libraries:
@@ -9,21 +9,21 @@ Miscellaneous Android UI Library
 
 See the included sample app for examples.
 
-![Screenshot](/screenshots/purtee-ui-demo.png?raw=true "Purtee UI Demo")
+![Screenshot](/screenshots/purrty-ui-demo.png?raw=true "Purrty UI Demo")
 
 ### Including the dependency
 
 To include all the libraries:
 
-`compile 'com.abtingramian:purtee:0.1.0'`
+`compile 'com.abtingramian:purrty:0.1.0'`
 
 To include libraries individually:
 
 ```
-compile 'com.abtingramian:purtee-arrow:0.1.0'
-compile 'com.abtingramian:purtee-coachmarks:0.1.0'
-compile 'com.abtingramian:purtee-shapedrawablewithborder:0.1.0'
-compile 'com.abtingramian:purtee-util:0.1.0'
+compile 'com.abtingramian:purrty-arrow:0.1.0'
+compile 'com.abtingramian:purrty-coachmarks:0.1.0'
+compile 'com.abtingramian:purrty-shapedrawablewithborder:0.1.0'
+compile 'com.abtingramian:purrty-util:0.1.0'
 ```
 
 ### Usage

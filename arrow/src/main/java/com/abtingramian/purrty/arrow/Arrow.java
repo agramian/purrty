@@ -1,4 +1,4 @@
-package com.abtingramian.purtee.arrow;
+package com.abtingramian.purrty.arrow;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.abtingramian.purtee.util.PathEffectUtil;
+import com.abtingramian.purrty.util.PathEffectUtil;
 
 /**
  * This is a custom view which draws an arrow between two points.

@@ -77,7 +77,7 @@ allprojects { project ->
         }
 
         // Define base name for archives
-        // Ex: purtee-ui-util
+        // Ex: purrty-ui-util
         archivesBaseName = isSubmodule ? "${baseName}-${project.name}" : baseName
 
         // Use tasks above to define artifacts

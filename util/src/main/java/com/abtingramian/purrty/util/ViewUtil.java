@@ -1,4 +1,4 @@
-package com.abtingramian.purtee.util;
+package com.abtingramian.purrty.util;
 
 import android.os.Build;
 import android.view.View;

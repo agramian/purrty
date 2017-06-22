@@ -5,7 +5,7 @@ android {
     buildToolsVersion buildTools
 
     defaultConfig {
-        applicationId "com.abtingramian.purteedemo"
+        applicationId "com.abtingramian.purrtydemo"
         minSdkVersion minSdk
         targetSdkVersion targetSdk
         versionCode 1

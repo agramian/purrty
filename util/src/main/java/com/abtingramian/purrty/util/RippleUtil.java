@@ -1,4 +1,4 @@
-package com.abtingramian.purtee.util;
+package com.abtingramian.purrty.util;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -12,7 +12,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.abtingramian.purtee.shapedrawablewithborder.ShapeDrawableWithBorder;
+import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
 
 /**
  * Helper class for programmatically setting a {@link RippleDrawable} for a views background.

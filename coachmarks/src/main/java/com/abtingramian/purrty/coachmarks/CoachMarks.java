@@ -1,4 +1,4 @@
-package com.abtingramian.purtee.coachmarks;
+package com.abtingramian.purrty.coachmarks;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -19,9 +19,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.abtingramian.purtee.shapedrawablewithborder.ShapeDrawableWithBorder;
-import com.abtingramian.purtee.util.RippleUtil;
-import com.abtingramian.purtee.util.ViewUtil;
+import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
+import com.abtingramian.purrty.util.RippleUtil;
+import com.abtingramian.purrty.util.ViewUtil;
 
 /**
  * This is a custom view for drawing a coach marks/tip box ui element.

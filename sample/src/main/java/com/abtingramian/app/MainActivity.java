@@ -13,10 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.abtingramian.purtee.arrow.Arrow;
-import com.abtingramian.purtee.shapedrawablewithborder.ShapeDrawableWithBorder;
-import com.abtingramian.purtee.util.DimensionUtil;
-import com.abtingramian.purtee.util.PathEffectUtil;
+import com.abtingramian.purrty.arrow.Arrow;
+import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
+import com.abtingramian.purrty.util.DimensionUtil;
+import com.abtingramian.purrty.util.PathEffectUtil;
 
 public class MainActivity extends AppCompatActivity {
 
