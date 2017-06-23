@@ -10,7 +10,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.PointF;
-import android.graphics.RectF;
 import android.support.annotation.ArrayRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
@@ -48,7 +47,6 @@ public class Arrow extends View {
     private final Path path = new Path();
     private final Path arrow = new Path();
     private final Matrix arrowRotationMatrix = new Matrix();
-    private final RectF arrowBounds = new RectF();
     private Paint linePaint;
     private Paint arrowPaint;
     private PointF startPoint = new PointF(0, 0);
@@ -106,9 +104,8 @@ public class Arrow extends View {
         arrow.moveTo(endPoint.x - arrowSize, endPoint.y);
         arrow.rLineTo(arrowSize, -arrowSize);
         arrow.rLineTo(arrowSize, arrowSize);
-        arrow.computeBounds(arrowBounds, true);
         arrowRotationMatrix.reset();
-        arrowRotationMatrix.postRotate(arrowRotationDegrees, arrowBounds.centerX(), arrowBounds.centerY());
+        arrowRotationMatrix.postRotate(arrowRotationDegrees, endPoint.x, endPoint.y);
         arrow.transform(arrowRotationMatrix);
         canvas.drawPath(arrow, arrowPaint);
     }
