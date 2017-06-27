@@ -108,8 +108,6 @@ public class BottomBar extends BaseTransientBottomBar {
 
     public static class Builder {
         private final Activity activity;
-        private @StringRes
-        int messageResId = R.string.error;
         private String message;
         private int duration;
         private View view;
@@ -120,7 +118,6 @@ public class BottomBar extends BaseTransientBottomBar {
         private Integer textColor;
         private @ColorRes int textColorResId = R.color.text;
         private View.OnClickListener action;
-        private @StringRes int actionTextResId = R.string.error;
         private String actionText;
 
         public Builder(@NonNull final Activity activity) {
@@ -128,7 +125,7 @@ public class BottomBar extends BaseTransientBottomBar {
         }
 
         public Builder message(@StringRes int messageResId) {
-            this.messageResId = messageResId;
+            message = activity.getString(messageResId);
             return this;
         }
 
@@ -193,7 +190,7 @@ public class BottomBar extends BaseTransientBottomBar {
         }
 
         public Builder actionText(@StringRes int actionTextResId) {
-            this.actionTextResId = actionTextResId;
+            actionText = activity.getString(actionTextResId);
             return this;
         }
 
@@ -218,18 +215,14 @@ public class BottomBar extends BaseTransientBottomBar {
             final BottomBar bottomBar = new BottomBar(parent, content, content);
             bottomBar.setDuration(duration);
             // resolve final resources if necessary
-            if (isNullOrEmpty(message)) {
-                message = activity.getString(messageResId);
+            if (!isNullOrEmpty(message)) {
+                bottomBar.setText(message);
             }
-            bottomBar.setText(message);
             if (backgroundColor == null) {
                 backgroundColor = ContextCompat.getColor(activity, backgroundColorResId);
             }
             if (textColor == null) {
                 textColor = ContextCompat.getColor(activity, textColorResId);
-            }
-            if (isNullOrEmpty(actionText)) {
-                actionText = activity.getString(actionTextResId);
             }
             // set an action string to open the system settings to allow the user to change the permission
             if (action != null && !isNullOrEmpty(actionText)) {
