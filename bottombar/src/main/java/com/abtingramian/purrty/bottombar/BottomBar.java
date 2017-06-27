@@ -2,8 +2,11 @@ package com.abtingramian.purrty.bottombar;
 
 import android.app.Activity;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -68,6 +72,13 @@ public class BottomBar extends BaseTransientBottomBar {
     }
 
     @NonNull
+    private void setImage(@NonNull Drawable drawable) {
+        final ImageView iv = contentLayout.getImageView();
+        iv.setImageDrawable(drawable);
+        iv.setVisibility(View.VISIBLE);
+    }
+
+    @NonNull
     private void setText(@NonNull CharSequence message) {
         final TextView tv = contentLayout.getMessageView();
         tv.setText(message);
@@ -113,8 +124,10 @@ public class BottomBar extends BaseTransientBottomBar {
         private View view;
         private @IdRes int viewResId = android.R.id.content;
         private Integer backgroundColor;
-        private @ColorRes
-        int backgroundColorResId = R.color.background;
+        private @ColorRes int backgroundColorResId = R.color.background;
+        private @DrawableRes int imageResId;
+        private Drawable image;
+        private Drawable background;
         private Integer textColor;
         private @ColorRes int textColorResId = R.color.text;
         private View.OnClickListener action;
@@ -122,6 +135,16 @@ public class BottomBar extends BaseTransientBottomBar {
 
         public Builder(@NonNull final Activity activity) {
             this.activity = activity;
+        }
+
+        public Builder image(@DrawableRes int imageResId) {
+            image = ContextCompat.getDrawable(activity, imageResId);
+            return this;
+        }
+
+        public Builder image(@NonNull Drawable image) {
+            this.image = image;
+            return this;
         }
 
         public Builder message(@StringRes int messageResId) {
@@ -161,6 +184,16 @@ public class BottomBar extends BaseTransientBottomBar {
 
         public Builder view(@IdRes int viewResId) {
             this.viewResId = viewResId;
+            return this;
+        }
+
+        public Builder backgroundDrawable(@DrawableRes int backgroundResId) {
+            background = ContextCompat.getDrawable(activity, backgroundResId);
+            return this;
+        }
+
+        public Builder backgroundDrawable(@NonNull Drawable background) {
+            this.background = background;
             return this;
         }
 
@@ -214,12 +247,25 @@ public class BottomBar extends BaseTransientBottomBar {
                     (BottomBarContentLayout) inflater.inflate(R.layout.bottombar_layout, parent, false);
             final BottomBar bottomBar = new BottomBar(parent, content, content);
             bottomBar.setDuration(duration);
-            // resolve final resources if necessary
+            // resolve final resources if necessary and set the appropriate options on the view
+            if (image != null) {
+                bottomBar.setImage(image);
+            }
+            if (background != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    bottomBar.getView().setBackground(background);
+                } else {
+                    bottomBar.getView().setBackgroundDrawable(background);
+                }
+            } else {
+                // if not background drawable was specified then set a background color
+                if (backgroundColor == null) {
+                    backgroundColor = ContextCompat.getColor(activity, backgroundColorResId);
+                }
+                bottomBar.getView().setBackgroundColor(backgroundColor);
+            }
             if (!isNullOrEmpty(message)) {
                 bottomBar.setText(message);
-            }
-            if (backgroundColor == null) {
-                backgroundColor = ContextCompat.getColor(activity, backgroundColorResId);
             }
             if (textColor == null) {
                 textColor = ContextCompat.getColor(activity, textColorResId);
@@ -229,7 +275,6 @@ public class BottomBar extends BaseTransientBottomBar {
                 bottomBar.setAction(actionText, action);
             }
             bottomBar.setActionTextColor(textColor);
-            bottomBar.getView().setBackgroundColor(backgroundColor);
             TextView tv = bottomBar.getView().findViewById(R.id.bottombar_text);
             tv.setTextColor(textColor);
             return bottomBar;

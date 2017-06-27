@@ -8,6 +8,7 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,8 +19,8 @@ import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
  * @hide
  */
 @RestrictTo(LIBRARY_GROUP)
-public class BottomBarContentLayout extends LinearLayout implements
-        BaseTransientBottomBar.ContentViewCallback {
+public class BottomBarContentLayout extends LinearLayout implements BaseTransientBottomBar.ContentViewCallback {
+    private ImageView imageView;
     private TextView messageView;
     private Button actionView;
 
@@ -41,8 +42,13 @@ public class BottomBarContentLayout extends LinearLayout implements
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        imageView = findViewById(R.id.bottombar_image);
         messageView = findViewById(R.id.bottombar_text);
         actionView = findViewById(R.id.bottombar_action);
+    }
+
+    public ImageView getImageView() {
+        return imageView;
     }
 
     public TextView getMessageView() {

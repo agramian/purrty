@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         // draw bottom bar
         new BottomBar.Builder(this)
                 .view(R.id.coordinator_layout)
+                .image(R.drawable.ic_error_black_24dp)
+                .backgroundDrawable(R.drawable.bottombar_background)
                 .message("Message")
                 .actionText("Action")
                 .action(new View.OnClickListener() {
