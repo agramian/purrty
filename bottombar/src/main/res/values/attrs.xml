@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomBarContentLayout">
+        <attr name="android_maxWidth" format="dimension"/>
+        <attr name="maxActionInlineWidth" format="dimension"/>
+        <attr name="bottombar_background" format="reference"/>
+        <attr name="bottombar_image" format="reference"/>
+    </declare-styleable>
+</resources>

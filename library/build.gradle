@@ -23,6 +23,7 @@ dependencies {
     compile project(":util")
     compile project(":coachmarks")
     compile project(":arrow")
+    compile project(":bottombar")
 }
 
 /**
@@ -90,6 +91,7 @@ task publishAllToCustomLocal(dependsOn: [
  * Upload all artifacts to bintray.
  */
 task bintrayUploadAll(dependsOn: [
+        'prepareArtifacts',
         'bintrayUpload',
         bintrayUploadTasks()]) {
 

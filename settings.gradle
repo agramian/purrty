@@ -1,1 +1,7 @@
-include ':sample', ':library', ':shapedrawablewithborder', ':util', ':coachmarks', ':arrow'
+include ':sample',
+        ':library',
+        ':shapedrawablewithborder',
+        ':util',
+        ':coachmarks',
+        ':arrow',
+        ':bottombar'

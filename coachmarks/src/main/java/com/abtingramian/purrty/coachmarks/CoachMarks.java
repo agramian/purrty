@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.PathShape;
+import android.support.annotation.LayoutRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
@@ -49,7 +50,7 @@ public class CoachMarks extends FrameLayout {
     private int pointWidth;
     private int boxColor;
     private int cornerRadius;
-    private int layoutResId;
+    private @LayoutRes int layoutResId;
     private TIP_SIDE tipSide;
     private int tipLocationFromEnd;
     private boolean shadow;

@@ -14,6 +14,7 @@ import android.util.TypedValue;
 import android.view.View;
 
 import com.abtingramian.purrty.arrow.Arrow;
+import com.abtingramian.purrty.bottombar.BottomBar;
 import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
 import com.abtingramian.purrty.util.DimensionUtil;
 import com.abtingramian.purrty.util.PathEffectUtil;
@@ -70,6 +71,21 @@ public class MainActivity extends AppCompatActivity {
                         .show(MainActivity.this);
             }
         });
+        // draw bottom bar
+        new BottomBar.Builder(this)
+                .view(R.id.coordinator_layout)
+                .image(R.drawable.ic_error_black_24dp)
+                .backgroundDrawable(R.drawable.bottombar_background)
+                .message("Message")
+                .actionText("Action")
+                .action(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                })
+                .durationIndefinite()
+                .build()
+                .show();
     }
 
     private Path getPathTriangle(int width, int height) {
