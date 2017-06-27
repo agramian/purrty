@@ -90,6 +90,7 @@ task publishAllToCustomLocal(dependsOn: [
  * Upload all artifacts to bintray.
  */
 task bintrayUploadAll(dependsOn: [
+        'prepareArtifacts',
         'bintrayUpload',
         bintrayUploadTasks()]) {
 

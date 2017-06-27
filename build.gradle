@@ -287,7 +287,7 @@ allprojects {
         if (project.name == 'library' || isSubmodule) {
             // make sure the bintrayUpload task executes after prepareArtifacts
             // is complete so that all the files are available when uploading
-            bintrayUpload.dependsOn 'prepareArtifacts'
+            bintrayUpload.dependsOn 'prepareArtifacts', ':library:prepareArtifacts'
         }
     }
 }
