@@ -21,7 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 /**
- * This is a custom bottom bar which is similar to a {@link Snackbar} but more customizeable.
+ * This is a custom bottom bar which is similar to a {@link Snackbar} but more customizable.
  */
 public class BottomBar extends BaseTransientBottomBar {
 
@@ -230,7 +230,7 @@ public class BottomBar extends BaseTransientBottomBar {
             }
             bottomBar.setActionTextColor(textColor);
             bottomBar.getView().setBackgroundColor(backgroundColor);
-            TextView tv = bottomBar.getView().findViewById(android.support.design.R.id.snackbar_text);
+            TextView tv = bottomBar.getView().findViewById(R.id.bottombar_text);
             tv.setTextColor(textColor);
             return bottomBar;
         }

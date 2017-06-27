@@ -73,6 +73,15 @@ public class MainActivity extends AppCompatActivity {
         });
         // draw bottom bar
         new BottomBar.Builder(this)
+                .view(R.id.coordinator_layout)
+                .message("Message")
+                .actionText("Action")
+                .action(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                })
+                .durationIndefinite()
                 .build()
                 .show();
     }

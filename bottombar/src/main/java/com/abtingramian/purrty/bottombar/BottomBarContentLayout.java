@@ -20,11 +20,11 @@ import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 @RestrictTo(LIBRARY_GROUP)
 public class BottomBarContentLayout extends LinearLayout implements
         BaseTransientBottomBar.ContentViewCallback {
-    private TextView mMessageView;
-    private Button mActionView;
+    private TextView messageView;
+    private Button actionView;
 
-    private int mMaxWidth;
-    private int mMaxInlineActionWidth;
+    private int maxWidth;
+    private int maxInlineActionWidth;
 
     public BottomBarContentLayout(Context context) {
         this(context, null);
@@ -33,45 +33,42 @@ public class BottomBarContentLayout extends LinearLayout implements
     public BottomBarContentLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs, android.support.design.R.styleable.SnackbarLayout);
-        mMaxWidth = a.getDimensionPixelSize(android.support.design.R.styleable.SnackbarLayout_android_maxWidth, -1);
-        mMaxInlineActionWidth = a.getDimensionPixelSize(
-                android.support.design.R.styleable.SnackbarLayout_maxActionInlineWidth, -1);
+        maxWidth = a.getDimensionPixelSize(R.styleable.BottomBarContentLayout_android_maxWidth, -1);
+        maxInlineActionWidth = a.getDimensionPixelSize(R.styleable.BottomBarContentLayout_maxActionInlineWidth, -1);
         a.recycle();
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mMessageView = (TextView) findViewById(android.support.design.R.id.snackbar_text);
-        mActionView = (Button) findViewById(android.support.design.R.id.snackbar_action);
+        messageView = findViewById(R.id.bottombar_text);
+        actionView = findViewById(R.id.bottombar_action);
     }
 
     public TextView getMessageView() {
-        return mMessageView;
+        return messageView;
     }
 
     public Button getActionView() {
-        return mActionView;
+        return actionView;
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        if (mMaxWidth > 0 && getMeasuredWidth() > mMaxWidth) {
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec(mMaxWidth, MeasureSpec.EXACTLY);
+        if (maxWidth > 0 && getMeasuredWidth() > maxWidth) {
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec(maxWidth, MeasureSpec.EXACTLY);
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
 
-        final int multiLineVPadding = getResources().getDimensionPixelSize(
-                android.support.design.R.dimen.design_snackbar_padding_vertical_2lines);
-        final int singleLineVPadding = getResources().getDimensionPixelSize(
-                android.support.design.R.dimen.design_snackbar_padding_vertical);
-        final boolean isMultiLine = mMessageView.getLayout().getLineCount() > 1;
+        final int multiLineVPadding = getResources().getDimensionPixelSize(R.dimen.bottombar_padding_vertical_2lines);
+        final int singleLineVPadding = getResources().getDimensionPixelSize(R.dimen.bottombar_padding_vertical);
+        final boolean isMultiLine = messageView.getLayout().getLineCount() > 1;
 
         boolean remeasure = false;
-        if (isMultiLine && mMaxInlineActionWidth > 0
-                && mActionView.getMeasuredWidth() > mMaxInlineActionWidth) {
+        if (isMultiLine && maxInlineActionWidth > 0
+                && actionView.getMeasuredWidth() > maxInlineActionWidth) {
             if (updateViewsWithinLayout(VERTICAL, multiLineVPadding,
                     multiLineVPadding - singleLineVPadding)) {
                 remeasure = true;
@@ -95,9 +92,9 @@ public class BottomBarContentLayout extends LinearLayout implements
             setOrientation(orientation);
             changed = true;
         }
-        if (mMessageView.getPaddingTop() != messagePadTop
-                || mMessageView.getPaddingBottom() != messagePadBottom) {
-            updateTopBottomPadding(mMessageView, messagePadTop, messagePadBottom);
+        if (messageView.getPaddingTop() != messagePadTop
+                || messageView.getPaddingBottom() != messagePadBottom) {
+            updateTopBottomPadding(messageView, messagePadTop, messagePadBottom);
             changed = true;
         }
         return changed;
@@ -116,26 +113,26 @@ public class BottomBarContentLayout extends LinearLayout implements
 
     @Override
     public void animateContentIn(int delay, int duration) {
-        ViewCompat.setAlpha(mMessageView, 0f);
-        ViewCompat.animate(mMessageView).alpha(1f).setDuration(duration)
+        ViewCompat.setAlpha(messageView, 0f);
+        ViewCompat.animate(messageView).alpha(1f).setDuration(duration)
                 .setStartDelay(delay).start();
 
-        if (mActionView.getVisibility() == VISIBLE) {
-            ViewCompat.setAlpha(mActionView, 0f);
-            ViewCompat.animate(mActionView).alpha(1f).setDuration(duration)
+        if (actionView.getVisibility() == VISIBLE) {
+            ViewCompat.setAlpha(actionView, 0f);
+            ViewCompat.animate(actionView).alpha(1f).setDuration(duration)
                     .setStartDelay(delay).start();
         }
     }
 
     @Override
     public void animateContentOut(int delay, int duration) {
-        ViewCompat.setAlpha(mMessageView, 1f);
-        ViewCompat.animate(mMessageView).alpha(0f).setDuration(duration)
+        ViewCompat.setAlpha(messageView, 1f);
+        ViewCompat.animate(messageView).alpha(0f).setDuration(duration)
                 .setStartDelay(delay).start();
 
-        if (mActionView.getVisibility() == VISIBLE) {
-            ViewCompat.setAlpha(mActionView, 1f);
-            ViewCompat.animate(mActionView).alpha(0f).setDuration(duration)
+        if (actionView.getVisibility() == VISIBLE) {
+            ViewCompat.setAlpha(actionView, 1f);
+            ViewCompat.animate(actionView).alpha(0f).setDuration(duration)
                     .setStartDelay(delay).start();
         }
     }

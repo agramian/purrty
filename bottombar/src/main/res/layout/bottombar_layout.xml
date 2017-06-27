@@ -2,36 +2,20 @@
 <view
     xmlns:android="http://schemas.android.com/apk/res/android"
     class="com.abtingramian.purrty.bottombar.BottomBarContentLayout"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    style="@style/BottomBar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom">
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/snackbar_text"
+        android:id="@+id/bottombar_text"
+        style="@style/BottomBar.Text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingTop="@dimen/design_snackbar_padding_vertical"
-        android:paddingBottom="@dimen/design_snackbar_padding_vertical"
-        android:paddingLeft="@dimen/design_snackbar_padding_horizontal"
-        android:paddingRight="@dimen/design_snackbar_padding_horizontal"
-        android:textAppearance="@style/TextAppearance.Design.Snackbar.Message"
-        android:maxLines="@integer/design_snackbar_text_max_lines"
-        android:layout_gravity="center_vertical|left|start"
-        android:ellipsize="end"
-        android:textAlignment="viewStart"/>
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/snackbar_action"
+        android:id="@+id/bottombar_action"
+        style="@style/BottomBar.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/design_snackbar_extra_spacing_horizontal"
-        android:layout_marginStart="@dimen/design_snackbar_extra_spacing_horizontal"
-        android:layout_gravity="center_vertical|right|end"
-        android:minWidth="48dp"
-        android:visibility="gone"
-        android:textColor="?attr/colorAccent"
-        style="?attr/borderlessButtonStyle"/>
-
+        android:visibility="gone" />
 </view>
