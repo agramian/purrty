@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // draw bottom bar
-        new BottomBar.Builder(findViewById(android.R.id.content))
+        new BottomBar.Builder(this)
                 .build()
                 .show();
     }
