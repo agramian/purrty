@@ -10,6 +10,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 
@@ -76,7 +77,7 @@ public class RippleUtil {
             colorRipple = ColorUtil.adjustAlpha(colorRipple, alpha);
         }
         // create base drawable
-        Drawable backgroundDrawable;
+        final Drawable backgroundDrawable;
         if (shapeDrawable != null) {
             backgroundDrawable = shapeDrawable;
             shapeDrawable.getPaint().setColor(colorMain);
@@ -109,7 +110,7 @@ public class RippleUtil {
         }
         // else create state list drawable and return
         // create a copy of the normal state drawable and adjust for highlighted state
-        Drawable backgroundDrawableHighlighted = backgroundDrawable.getConstantState().newDrawable();
+        final Drawable backgroundDrawableHighlighted = DrawableCompat.wrap(backgroundDrawable.getConstantState().newDrawable());
         if (backgroundDrawableHighlighted instanceof ShapeDrawable) {
             //noinspection ResourceAsColor
             ((ShapeDrawable) backgroundDrawableHighlighted.mutate()).getPaint().setColor(ColorUtil.isBright(colorMain)
@@ -122,7 +123,7 @@ public class RippleUtil {
                     : ColorUtil.lightenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.ripple_pressed_lighten_darken_amount)), true));
         }
         // create a states with both drawables
-        StateListDrawable states = new StateListDrawable();
+        final StateListDrawable states = new StateListDrawable();
         states.addState(new int[] {android.R.attr.state_pressed}, backgroundDrawableHighlighted);
         states.addState(new int[] {}, backgroundDrawable);
         return states;
