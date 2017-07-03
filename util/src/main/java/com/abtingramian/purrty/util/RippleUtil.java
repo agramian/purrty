@@ -110,7 +110,8 @@ public class RippleUtil {
         }
         // else create state list drawable and return
         // create a copy of the normal state drawable and adjust for highlighted state
-        final Drawable backgroundDrawableHighlighted = DrawableCompat.wrap(backgroundDrawable.getConstantState().newDrawable());
+        final Drawable backgroundDrawableHighlighted = Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN
+                ? backgroundDrawable.getConstantState().newDrawable() : DrawableCompat.wrap(backgroundDrawable.getConstantState().newDrawable());
         if (backgroundDrawableHighlighted instanceof ShapeDrawable) {
             //noinspection ResourceAsColor
             ((ShapeDrawable) backgroundDrawableHighlighted.mutate()).getPaint().setColor(ColorUtil.isBright(colorMain)
