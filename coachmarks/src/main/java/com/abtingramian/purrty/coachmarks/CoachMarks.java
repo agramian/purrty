@@ -20,10 +20,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
@@ -451,7 +453,10 @@ public class CoachMarks extends FrameLayout {
 
         public CoachMarks build() {
             CoachMarks coachMarks = new CoachMarks(context);
-            coachMarks.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            // set layout params to center content
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.gravity = Gravity.CENTER;
+            coachMarks.setLayoutParams(layoutParams);
             // if a custom view or layout res id is provided use it
             if (customViewResId != 0) {
                 view = LayoutInflater.from(context).inflate(customViewResId, coachMarks, false);
@@ -474,7 +479,6 @@ public class CoachMarks extends FrameLayout {
             coachMarks.setTipLocationFromEnd(tipLocationFromEnd);
             coachMarks.setShadow(shadow);
             coachMarks.setup();
-            coachMarks.init();
             return coachMarks;
         }
 
