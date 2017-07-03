@@ -15,8 +15,10 @@ import android.view.View;
 
 import com.abtingramian.purrty.arrow.Arrow;
 import com.abtingramian.purrty.bottombar.BottomBar;
+import com.abtingramian.purrty.coachmarks.CoachMarks;
 import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
 import com.abtingramian.purrty.util.DimensionUtil;
+import com.abtingramian.purrty.util.DrawableUtil;
 import com.abtingramian.purrty.util.PathEffectUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
         circle.post(new Runnable() {
             @Override
             public void run() {
-                Rect circleRect = new Rect();
+                final Rect circleRect = new Rect();
                 circle.getGlobalVisibleRect(circleRect);
-                Rect triangleRect = new Rect();
+                final Rect triangleRect = new Rect();
                 triangle.getGlobalVisibleRect(triangleRect);
                 new Arrow.Builder(MainActivity.this)
                         .startPoint(new PointF(circleRect.left, circleRect.exactCenterY()))
@@ -69,12 +71,27 @@ public class MainActivity extends AppCompatActivity {
                                 .build())
                         .build()
                         .show(MainActivity.this);
+                // draw programmatic coachmarks
+                final CoachMarks coachMarks = new CoachMarks.Builder(MainActivity.this)
+                        .text("Circle")
+                        .cornerRadius(DimensionUtil.dpToPx(MainActivity.this, 4))
+                        .build();
+                coachMarks.setVisibility(View.INVISIBLE);
+                coachMarks.show(MainActivity.this);
+                coachMarks.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ViewCompat.setX(coachMarks, circleRect.exactCenterX() - (coachMarks.getWidth() * 0.5f));
+                        ViewCompat.setY(coachMarks, circleRect.top - coachMarks.getHeight());
+                        coachMarks.setVisibility(View.VISIBLE);
+                    }
+                });
             }
         });
         // draw bottom bar
         new BottomBar.Builder(this)
                 .view(R.id.coordinator_layout)
-                .image(R.drawable.ic_error_black_24dp)
+                .image(DrawableUtil.createVectorDrawable(this, R.drawable.ic_error_black_24dp))
                 .backgroundDrawable(R.drawable.bottombar_background)
                 .message("Message")
                 .actionText("Action")
@@ -86,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 .durationIndefinite()
                 .build()
                 .show();
+
     }
 
     private Path getPathTriangle(int width, int height) {
