@@ -2,4 +2,5 @@
 <resources>
     <dimen name="purrty_coachmarks_point_size">20dp</dimen>
     <dimen name="purrty_coachmarks_padding">16dp</dimen>
+    <dimen name="purrty_coachmarks_margin">16dp</dimen>
 </resources>

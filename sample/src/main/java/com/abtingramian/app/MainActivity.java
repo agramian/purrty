@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
                         .cornerRadius(DimensionUtil.dpToPx(MainActivity.this, 4))
                         .build();
                 coachMarks.setVisibility(View.INVISIBLE);
+                coachMarks.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        coachMarks.hide();
+                    }
+                });
                 coachMarks.show(MainActivity.this);
                 coachMarks.post(new Runnable() {
                     @Override

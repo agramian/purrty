@@ -172,12 +172,6 @@ public class CoachMarks extends FrameLayout {
                 break;
         }
         setClipChildren(false);
-        setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setVisibility(GONE);
-            }
-        });
     }
 
     private void init() {
@@ -343,6 +337,7 @@ public class CoachMarks extends FrameLayout {
             this.context = context;
             pointWidth = pointHeight = context.getResources().getDimensionPixelSize(R.dimen.purrty_coachmarks_point_size);
             padding = context.getResources().getDimensionPixelSize(R.dimen.purrty_coachmarks_padding);
+            margin = context.getResources().getDimensionPixelSize(R.dimen.purrty_coachmarks_margin);
             boxColor = ContextCompat.getColor(context, R.color.purrty_coachmarks_box);
             textColor = ContextCompat.getColor(context, R.color.purrty_coachmarks_text);
         }
@@ -417,6 +412,16 @@ public class CoachMarks extends FrameLayout {
             return this;
         }
 
+        public Builder margin(int size) {
+            margin = size;
+            return this;
+        }
+
+        public Builder marginRes(@DimenRes int sizeResId) {
+            margin = context.getResources().getDimensionPixelSize(sizeResId);
+            return this;
+        }
+
         public Builder text(@NonNull CharSequence text) {
             this.text = text;
             return this;
@@ -457,6 +462,7 @@ public class CoachMarks extends FrameLayout {
             // set layout params to center content
             FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.gravity = Gravity.CENTER;
+            layoutParams.setMargins(margin, margin, margin, margin);
             coachMarks.setLayoutParams(layoutParams);
             // if a custom view or layout res id is provided use it
             if (customViewResId != 0) {
