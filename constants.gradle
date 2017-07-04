@@ -9,7 +9,7 @@ project.ext {
     organizationUrl = 'https://github.com/agramian'
     grpPkg = 'abtingramian'
     group = "com.${grpPkg}"
-    version = '0.2.0'
+    version = '0.2.1'
     baseName = 'purrty'
     repoName = 'purrty'
     url = 'github.com/agramian/purrty'
