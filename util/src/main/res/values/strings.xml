@@ -1,3 +1,3 @@
 <resources>
-    <item name="ripple_pressed_lighten_darken_amount" type="string" format="float">0.1</item>
+    <item name="purrty_util_ripple_pressed_lighten_darken_amount" type="string" format="float">0.1</item>
 </resources>

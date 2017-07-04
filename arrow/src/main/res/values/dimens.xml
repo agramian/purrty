@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="stroke_width">2dp</dimen>
-    <dimen name="arrow_size">8dp</dimen>
+    <dimen name="purrty_arrow_stroke_width">2dp</dimen>
+    <dimen name="purrty_arrow_arrow_size">8dp</dimen>
 </resources>

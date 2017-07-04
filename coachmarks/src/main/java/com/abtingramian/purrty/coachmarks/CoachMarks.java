@@ -71,10 +71,10 @@ public class CoachMarks extends FrameLayout {
         super(context, attrs);
         TypedArray customAttrs = context.obtainStyledAttributes(attrs, R.styleable.CoachMarks);
         try {
-            int pointSizeDefault = getResources().getDimensionPixelSize(R.dimen.coachmarks_point_size);
+            int pointSizeDefault = getResources().getDimensionPixelSize(R.dimen.purrty_coachmarks_point_size);
             pointHeight = customAttrs.getDimensionPixelSize(R.styleable.CoachMarks_point_height, pointSizeDefault);
             pointWidth = customAttrs.getDimensionPixelSize(R.styleable.CoachMarks_point_width, pointSizeDefault);
-            boxColor = customAttrs.getColor(R.styleable.CoachMarks_box_color, ContextCompat.getColor(context, R.color.coachmarks_box));
+            boxColor = customAttrs.getColor(R.styleable.CoachMarks_box_color, ContextCompat.getColor(context, R.color.purrty_coachmarks_box));
             cornerRadius = customAttrs.getDimensionPixelSize(R.styleable.CoachMarks_corner_radius, 0);
             layoutResId = customAttrs.getResourceId(R.styleable.CoachMarks_custom_layout, 0);
             tipSide = TIP_SIDE.fromId(customAttrs.getInt(R.styleable.CoachMarks_tip_side, 3));
@@ -190,7 +190,7 @@ public class CoachMarks extends FrameLayout {
             shapeDrawableShadow.setShaderFactory(new ShapeDrawable.ShaderFactory() {
                 @Override
                 public Shader resize(int width, int height) {
-                    int baseShadowColor = ContextCompat.getColor(getContext(), R.color.shadow);
+                    int baseShadowColor = ContextCompat.getColor(getContext(), R.color.purrty_coachmarks_shadow);
                     return new LinearGradient(0, 0, 0, height,
                             new int[]{baseShadowColor, baseShadowColor, baseShadowColor, baseShadowColor},
                             new float[]{0, 1, 1, 1},
@@ -331,6 +331,7 @@ public class CoachMarks extends FrameLayout {
         private int textColor;
         private int cornerRadius = 0;
         private int padding;
+        private int margin;
         private CharSequence text;
         private View view;
         private @LayoutRes int customViewResId;
@@ -340,10 +341,10 @@ public class CoachMarks extends FrameLayout {
 
         public Builder(@NonNull final Context context) {
             this.context = context;
-            pointWidth = pointHeight = context.getResources().getDimensionPixelSize(R.dimen.coachmarks_point_size);
-            padding = context.getResources().getDimensionPixelSize(R.dimen.coachmarks_padding);
-            boxColor = ContextCompat.getColor(context, R.color.coachmarks_box);
-            textColor = ContextCompat.getColor(context, R.color.coachmarks_text);
+            pointWidth = pointHeight = context.getResources().getDimensionPixelSize(R.dimen.purrty_coachmarks_point_size);
+            padding = context.getResources().getDimensionPixelSize(R.dimen.purrty_coachmarks_padding);
+            boxColor = ContextCompat.getColor(context, R.color.purrty_coachmarks_box);
+            textColor = ContextCompat.getColor(context, R.color.purrty_coachmarks_text);
         }
 
         public Builder pointSize(int size) {
@@ -454,7 +455,7 @@ public class CoachMarks extends FrameLayout {
         public CoachMarks build() {
             CoachMarks coachMarks = new CoachMarks(context);
             // set layout params to center content
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.gravity = Gravity.CENTER;
             coachMarks.setLayoutParams(layoutParams);
             // if a custom view or layout res id is provided use it

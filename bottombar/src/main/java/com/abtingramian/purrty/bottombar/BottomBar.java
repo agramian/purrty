@@ -124,12 +124,12 @@ public class BottomBar extends BaseTransientBottomBar {
         private View view;
         private @IdRes int viewResId = android.R.id.content;
         private Integer backgroundColor;
-        private @ColorRes int backgroundColorResId = R.color.background;
+        private @ColorRes int backgroundColorResId = R.color.purrty_bottombar_background;
         private @DrawableRes int imageResId;
         private Drawable image;
         private Drawable background;
         private Integer textColor;
-        private @ColorRes int textColorResId = R.color.text;
+        private @ColorRes int textColorResId = R.color.purrty_bottombar_text;
         private View.OnClickListener action;
         private String actionText;
 

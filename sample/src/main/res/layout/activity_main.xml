@@ -64,7 +64,7 @@
             app:line_color="@color/colorPrimaryDark"
             app:arrow_color="@color/colorAccent"
             app:path_effect="DASH_PATH"
-            app:dash_path_interval_array="@array/dash_path_intervals"/>
+            app:dash_path_interval_array="@array/purrty_arrow_dash_path_intervals"/>
 
     </FrameLayout>
 

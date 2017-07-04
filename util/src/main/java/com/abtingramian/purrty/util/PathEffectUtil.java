@@ -38,8 +38,8 @@ public class PathEffectUtil {
         public DashPathEffect build() {
             // use default interval lengths if nothing was specified with the builder
             if (intervalsList.isEmpty()) {
-                intervalsList.add(context.getResources().getDimension(R.dimen.dash_interval_on));
-                intervalsList.add(context.getResources().getDimension(R.dimen.dash_interval_off));
+                intervalsList.add(context.getResources().getDimension(R.dimen.purrty_util_dash_interval_on));
+                intervalsList.add(context.getResources().getDimension(R.dimen.purrty_util_dash_interval_off));
             }
             if (intervalsList.size() < 2 || intervalsList.size() % 2 != 0) {
                 throw new IllegalArgumentException("A DashPathEffect requires at least 2 and an even number of interval length entries!");

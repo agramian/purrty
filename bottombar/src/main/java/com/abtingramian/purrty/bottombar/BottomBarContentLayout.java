@@ -68,8 +68,8 @@ public class BottomBarContentLayout extends LinearLayout implements BaseTransien
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
 
-        final int multiLineVPadding = getResources().getDimensionPixelSize(R.dimen.bottombar_padding_vertical_2lines);
-        final int singleLineVPadding = getResources().getDimensionPixelSize(R.dimen.bottombar_padding_vertical);
+        final int multiLineVPadding = getResources().getDimensionPixelSize(R.dimen.purrty_bottombar_padding_vertical_2lines);
+        final int singleLineVPadding = getResources().getDimensionPixelSize(R.dimen.purrty_bottombar_padding_vertical);
         final boolean isMultiLine = messageView.getLayout().getLineCount() > 1;
 
         boolean remeasure = false;

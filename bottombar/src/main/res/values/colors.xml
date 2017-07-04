@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#0096E2</color>
-    <color name="text">#FFFFFF</color>
+    <color name="purrty_bottombar_background">#0096E2</color>
+    <color name="purrty_bottombar_text">#FFFFFF</color>
 </resources>

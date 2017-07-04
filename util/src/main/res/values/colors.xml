@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ripple_dark">#19000000</color>
-    <color name="ripple_light">#80ffffff</color>
+    <color name="purrty_util_ripple_dark">#19000000</color>
+    <color name="purrty_util_ripple_light">#80ffffff</color>
 </resources>

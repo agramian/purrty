@@ -4,7 +4,7 @@
     These are dp values but no "dp" unit identifier should be specified since this is an integer array.
     Android does not provide a straightforward way to create a resource array of dimension values so this is the workaround.
     -->
-    <integer-array name="dash_path_intervals">
+    <integer-array name="purrty_arrow_dash_path_intervals">
         <item>4</item>
         <item>8</item>
     </integer-array>

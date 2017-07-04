@@ -2,27 +2,27 @@
 <view xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     class="com.abtingramian.purrty.bottombar.BottomBarContentLayout"
-    style="@style/BottomBar"
+    style="@style/PurrtyBottomBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/bottombar_image"
-        style="@style/BottomBar.Image"
+        style="@style/PurrtyBottomBar.Image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/bottombar_text"
-        style="@style/BottomBar.Text"
+        style="@style/PurrtyBottomBar.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Message"/>
 
     <Button
         android:id="@+id/bottombar_action"
-        style="@style/BottomBar.Button"
+        style="@style/PurrtyBottomBar.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />

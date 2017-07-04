@@ -68,7 +68,7 @@ public class RippleUtil {
                                                 float alpha) {
         // if ripple color was not set, use black or white depending on color brightness
         if (colorRipple == -1) {
-            colorRipple = ContextCompat.getColor(context, ColorUtil.isBright(colorMain) ? R.color.ripple_dark : R.color.ripple_light);
+            colorRipple = ContextCompat.getColor(context, ColorUtil.isBright(colorMain) ? R.color.purrty_util_ripple_dark : R.color.purrty_util_ripple_light);
         }
         // apply alpha if necessary
         if (alpha != 1.0f) {
@@ -115,13 +115,13 @@ public class RippleUtil {
         if (backgroundDrawableHighlighted instanceof ShapeDrawable) {
             //noinspection ResourceAsColor
             ((ShapeDrawable) backgroundDrawableHighlighted.mutate()).getPaint().setColor(ColorUtil.isBright(colorMain)
-                    ? ColorUtil.darkenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.ripple_pressed_lighten_darken_amount)), true)
-                    : ColorUtil.lightenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.ripple_pressed_lighten_darken_amount)), true));
+                    ? ColorUtil.darkenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.purrty_util_ripple_pressed_lighten_darken_amount)), true)
+                    : ColorUtil.lightenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.purrty_util_ripple_pressed_lighten_darken_amount)), true));
         } else if (backgroundDrawableHighlighted instanceof GradientDrawable) {
             //noinspection ResourceAsColor
             ((GradientDrawable) backgroundDrawableHighlighted.mutate()).setColor(ColorUtil.isBright(colorMain)
-                    ? ColorUtil.darkenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.ripple_pressed_lighten_darken_amount)), true)
-                    : ColorUtil.lightenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.ripple_pressed_lighten_darken_amount)), true));
+                    ? ColorUtil.darkenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.purrty_util_ripple_pressed_lighten_darken_amount)), true)
+                    : ColorUtil.lightenColorByAmount(colorMain, Float.parseFloat(context.getResources().getString(R.string.purrty_util_ripple_pressed_lighten_darken_amount)), true));
         }
         // create a states with both drawables
         final StateListDrawable states = new StateListDrawable();

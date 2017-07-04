@@ -61,8 +61,8 @@ public class Arrow extends View {
     private Paint.Style arrowStyle = Paint.Style.STROKE;
     private PathEffect linePathEffect;
     private PathEffect arrowPathEffect;
-    private @DimenRes int strokeWidthResId = R.dimen.stroke_width;
-    private @DimenRes int arrowSizeResId  = R.dimen.arrow_size;
+    private @DimenRes int strokeWidthResId = R.dimen.purrty_arrow_stroke_width;
+    private @DimenRes int arrowSizeResId  = R.dimen.purrty_arrow_arrow_size;
     private float arrowRotationDegrees = 0f;
     private PATH_EFFECT pathEffect;
     private @ArrayRes int dashPathIntervalArrayResId;
@@ -78,13 +78,13 @@ public class Arrow extends View {
             startPoint = new PointF(customAttrs.getDimension(R.styleable.Arrow_start_x, 0), customAttrs.getDimension(R.styleable.Arrow_start_y, 0));
             endPoint = new PointF(customAttrs.getDimension(R.styleable.Arrow_end_x, 0), customAttrs.getDimension(R.styleable.Arrow_end_y, 0));
             curvature = customAttrs.getFloat(R.styleable.Arrow_curvature, 0);
-            strokeWidth = customAttrs.getDimension(R.styleable.Arrow_stroke_width, getResources().getDimension(R.dimen.stroke_width));
-            arrowSize = customAttrs.getDimension(R.styleable.Arrow_arrow_size, getResources().getDimension(R.dimen.arrow_size));
+            strokeWidth = customAttrs.getDimension(R.styleable.Arrow_stroke_width, getResources().getDimension(R.dimen.purrty_arrow_stroke_width));
+            arrowSize = customAttrs.getDimension(R.styleable.Arrow_arrow_size, getResources().getDimension(R.dimen.purrty_arrow_arrow_size));
             lineColor = customAttrs.getColor(R.styleable.Arrow_line_color, Color.BLACK);
             arrowColor = customAttrs.getColor(R.styleable.Arrow_arrow_color, Color.BLACK);
             arrowRotationDegrees = customAttrs.getFloat(R.styleable.Arrow_arrow_rotation_degrees, 0);
             pathEffect = PATH_EFFECT.fromId(customAttrs.getInt(R.styleable.Arrow_path_effect, 0));
-            dashPathIntervalArrayResId = customAttrs.getResourceId(R.styleable.Arrow_dash_path_interval_array, R.array.dash_path_intervals);
+            dashPathIntervalArrayResId = customAttrs.getResourceId(R.styleable.Arrow_dash_path_interval_array, R.array.purrty_arrow_dash_path_intervals);
         } finally {
             customAttrs.recycle();
         }

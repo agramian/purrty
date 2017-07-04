@@ -1,4 +1,4 @@
 <resources>
-    <dimen name="dash_interval_on">4dp</dimen>
-    <dimen name="dash_interval_off">8dp</dimen>
+    <dimen name="purrty_util_dash_interval_on">4dp</dimen>
+    <dimen name="purrty_util_dash_interval_off">8dp</dimen>
 </resources>
