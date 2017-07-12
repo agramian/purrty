@@ -6,10 +6,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.annotation.Px;
 import android.support.annotation.StringRes;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.CoordinatorLayout;
@@ -67,8 +68,9 @@ public class BottomBar extends BaseTransientBottomBar {
         return fallback;
     }
 
-    private static boolean isNullOrEmpty(@Nullable String string) {
-        return string == null || string.isEmpty();
+    @NonNull
+    private void setPadding(@Px int left, @Px int top, @Px int right, @Px int bottom) {
+        getView().setPadding(left, top, right, bottom);
     }
 
     @NonNull
@@ -76,6 +78,12 @@ public class BottomBar extends BaseTransientBottomBar {
         final ImageView iv = contentLayout.getImageView();
         iv.setImageDrawable(drawable);
         iv.setVisibility(View.VISIBLE);
+    }
+
+    @NonNull
+    private void setImagePadding(@Px int left, @Px int top, @Px int right, @Px int bottom) {
+        final ImageView iv = contentLayout.getImageView();
+        iv.setPadding(left, top, right, bottom);
     }
 
     @NonNull
@@ -119,24 +127,41 @@ public class BottomBar extends BaseTransientBottomBar {
 
     public static class Builder {
         private final Activity activity;
-        private String message;
-        private int duration;
+        private CharSequence message;
+        private long duration;
         private View view;
         private @IdRes int viewResId = android.R.id.content;
         private Integer backgroundColor;
         private @ColorRes int backgroundColorResId = R.color.purrty_bottombar_background;
-        private @DrawableRes int imageResId;
+        private @Px int paddingLeft = -1;
+        private @Px int paddingRight = -1;
         private Drawable image;
+        private @Px int imagePaddingLeft = -1;
+        private @Px int imagePaddingTop = -1;
+        private @Px int imagePaddingRight = -1;
+        private @Px int imagePaddingBottom = -1;
         private Drawable background;
         private Integer textColor;
         private @ColorRes int textColorResId = R.color.purrty_bottombar_text;
         private View.OnClickListener action;
-        private String actionText;
+        private CharSequence actionText;
 
         public Builder(@NonNull final Activity activity) {
             this.activity = activity;
         }
 
+        public Builder padding(@Px int left, @Px int right) {
+            paddingLeft = left;
+            paddingRight = right;
+            return this;
+        }
+
+        public Builder paddingRes(@DimenRes int left, @DimenRes int right) {
+            paddingLeft = activity.getResources().getDimensionPixelSize(left);
+            paddingRight = activity.getResources().getDimensionPixelSize(right);
+            return this;
+        }
+        
         public Builder image(@DrawableRes int imageResId) {
             image = ContextCompat.getDrawable(activity, imageResId);
             return this;
@@ -147,17 +172,33 @@ public class BottomBar extends BaseTransientBottomBar {
             return this;
         }
 
+        public Builder imagePadding(@Px int left, @Px int top, @Px int right, @Px int bottom) {
+            imagePaddingLeft = left;
+            imagePaddingTop = top;
+            imagePaddingRight = right;
+            imagePaddingBottom = bottom;
+            return this;
+        }
+
+        public Builder imagePaddingRes(@DimenRes int left, @DimenRes int top, @DimenRes int right, @DimenRes int bottom) {
+            imagePaddingLeft = activity.getResources().getDimensionPixelSize(left);
+            imagePaddingTop = activity.getResources().getDimensionPixelSize(top);
+            imagePaddingRight = activity.getResources().getDimensionPixelSize(right);
+            imagePaddingBottom = activity.getResources().getDimensionPixelSize(bottom);
+            return this;
+        }
+
         public Builder message(@StringRes int messageResId) {
             message = activity.getString(messageResId);
             return this;
         }
 
-        public Builder message(String message) {
+        public Builder message(CharSequence message) {
             this.message = message;
             return this;
         }
 
-        public Builder duration(int duration) {
+        public Builder duration(long duration) {
             this.duration = duration;
             return this;
         }
@@ -227,7 +268,7 @@ public class BottomBar extends BaseTransientBottomBar {
             return this;
         }
 
-        public Builder actionText(String actionText) {
+        public Builder actionText(CharSequence actionText) {
             this.actionText = actionText;
             return this;
         }
@@ -246,10 +287,18 @@ public class BottomBar extends BaseTransientBottomBar {
             final BottomBarContentLayout content =
                     (BottomBarContentLayout) inflater.inflate(R.layout.bottombar_layout, parent, false);
             final BottomBar bottomBar = new BottomBar(parent, content, content);
-            bottomBar.setDuration(duration);
+            bottomBar.setDuration((int) duration);
+            // set padding if specified
+            if (paddingLeft != -1) {
+                bottomBar.setPadding(paddingLeft, 0, paddingRight, 0);
+            }
             // resolve final resources if necessary and set the appropriate options on the view
             if (image != null) {
                 bottomBar.setImage(image);
+                if (imagePaddingLeft != -1) {
+                    // set image padding if specified
+                    bottomBar.setImagePadding(imagePaddingLeft, imagePaddingTop, imagePaddingRight, imagePaddingBottom);
+                }
             }
             if (background != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -264,14 +313,14 @@ public class BottomBar extends BaseTransientBottomBar {
                 }
                 bottomBar.getView().setBackgroundColor(backgroundColor);
             }
-            if (!isNullOrEmpty(message)) {
+            if (!TextUtils.isEmpty(message)) {
                 bottomBar.setText(message);
             }
             if (textColor == null) {
                 textColor = ContextCompat.getColor(activity, textColorResId);
             }
             // set an action string to open the system settings to allow the user to change the permission
-            if (action != null && !isNullOrEmpty(actionText)) {
+            if (action != null && !TextUtils.isEmpty(actionText)) {
                 bottomBar.setAction(actionText, action);
             }
             bottomBar.setActionTextColor(textColor);
