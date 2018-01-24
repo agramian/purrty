@@ -9,7 +9,7 @@ project.ext {
     organizationUrl = 'https://github.com/agramian'
     grpPkg = 'abtingramian'
     group = "com.${grpPkg}"
-    version = '0.2.2'
+    version = '0.2.3'
     baseName = 'purrty'
     repoName = 'purrty'
     url = 'github.com/agramian/purrty'
@@ -24,12 +24,12 @@ project.ext {
 
     // build and sdk values
     minSdk = 14
-    compileSdk = 26
+    compileSdk = 27
     targetSdk = compileSdk
-    buildTools = '26.0.0'
+    buildTools = '27.0.3'
 
     // dependency version declarations for interpolation
-    supportLibVer = '25.4.0'
+    supportLibVer = '27.0.2'
     supportTestLibVer = '0.5'
     junitLibVer = '4.12'
 }
