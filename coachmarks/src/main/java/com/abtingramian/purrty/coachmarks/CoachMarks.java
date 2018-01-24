@@ -36,7 +36,7 @@ import com.abtingramian.purrty.util.ViewUtil;
  */
 public class CoachMarks extends FrameLayout {
 
-    private enum TIP_SIDE {
+    public enum TIP_SIDE {
         LEFT(0), RIGHT(1), TOP(2), BOTTOM(3);
         int id;
 
