@@ -19,11 +19,11 @@ android {
 }
 
 dependencies {
-    compile project(":shapedrawablewithborder")
-    compile project(":util")
-    compile project(":coachmarks")
-    compile project(":arrow")
-    compile project(":bottombar")
+    implementation project(":shapedrawablewithborder")
+    implementation project(":util")
+    api project(":coachmarks")
+    api project(":arrow")
+    api project(":bottombar")
 }
 
 /**

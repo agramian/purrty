@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    compile project(":shapedrawablewithborder")
-    compile "com.android.support:appcompat-v7:$supportLibVer"
+    api project(":shapedrawablewithborder")
+    implementation "com.android.support:appcompat-v7:$supportLibVer"
 }

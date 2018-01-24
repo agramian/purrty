@@ -4,6 +4,7 @@ apply from: 'constants.gradle'
 buildscript {
     repositories {
         jcenter()
+        google()
         mavenLocal()
     }
     dependencies {
@@ -14,10 +15,8 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url "https://maven.google.com"
-        }
         jcenter()
+        google()
         mavenLocal()
         mavenCentral()
     }
