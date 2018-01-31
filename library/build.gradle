@@ -24,6 +24,7 @@ dependencies {
     api project(":coachmarks")
     api project(":arrow")
     api project(":bottombar")
+    api project(":overlay")
 }
 
 /**

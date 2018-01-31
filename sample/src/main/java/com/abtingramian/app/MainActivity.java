@@ -1,5 +1,6 @@
 package com.abtingramian.app;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.PointF;
@@ -9,6 +10,7 @@ import android.graphics.drawable.shapes.PathShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.view.View;
 import com.abtingramian.purrty.arrow.Arrow;
 import com.abtingramian.purrty.bottombar.BottomBar;
 import com.abtingramian.purrty.coachmarks.CoachMarks;
+import com.abtingramian.purrty.overlay.Overlay;
 import com.abtingramian.purrty.shapedrawablewithborder.ShapeDrawableWithBorder;
 import com.abtingramian.purrty.util.DimensionUtil;
 import com.abtingramian.purrty.util.DrawableUtil;
@@ -28,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // circle with border
-        ShapeDrawableWithBorder circleShapeDrawable = new ShapeDrawableWithBorder(new OvalShape());
+        final ShapeDrawableWithBorder circleShapeDrawable = new ShapeDrawableWithBorder(new OvalShape());
         circleShapeDrawable.getPaint().setDither(true);
         circleShapeDrawable.getPaint().setAntiAlias(true);
         circleShapeDrawable.setStrokeColor(Color.parseColor("red"));
         circleShapeDrawable.setStrokeWidth(20);
         // triangle with border
-        int sizeDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
-        PathShape trianglePath = new PathShape(getPathTriangle(sizeDp, sizeDp), sizeDp, sizeDp);
-        ShapeDrawableWithBorder triangleShapeDrawable = new ShapeDrawableWithBorder(trianglePath);
+        final int sizeDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
+        final PathShape trianglePath = new PathShape(getPathTriangle(sizeDp, sizeDp), sizeDp, sizeDp);
+        final ShapeDrawableWithBorder triangleShapeDrawable = new ShapeDrawableWithBorder(trianglePath);
         triangleShapeDrawable.getPaint().setDither(true);
         triangleShapeDrawable.getPaint().setAntiAlias(true);
         triangleShapeDrawable.setStrokeColor(Color.parseColor("red"));
@@ -94,16 +97,33 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+        // overlay
+        final Overlay overlay = new Overlay.Builder(this)
+                .colorRes(R.color.overlay_color)
+                .build();
         // draw bottom bar
         new BottomBar.Builder(this)
                 .view(R.id.coordinator_layout)
                 .image(DrawableUtil.createVectorDrawable(this, R.drawable.ic_error_black_24dp))
                 .backgroundDrawable(R.drawable.bottombar_background)
                 .message("Message")
-                .actionText("Action")
+                .actionText("Show overlay")
                 .action(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        overlay.show(MainActivity.this);
+                        final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("Blocking overlay")
+                                .setNeutralButton("Hide overlay", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        overlay.hide();
+                                    }
+                                })
+                                .setCancelable(false)
+                                .create();
+                        alertDialog.getWindow().setDimAmount(0);
+                        alertDialog.show();
                     }
                 })
                 .durationIndefinite()
@@ -113,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Path getPathTriangle(int width, int height) {
-        Path path = new Path();
+        final Path path = new Path();
         // bottom left
         path.moveTo(0, height);
         // top center tip

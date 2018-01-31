@@ -4,4 +4,5 @@ include ':sample',
         ':util',
         ':coachmarks',
         ':arrow',
-        ':bottombar'
+        ':bottombar',
+        ':overlay'
