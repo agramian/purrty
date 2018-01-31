@@ -1,5 +1,5 @@
 project.ext {
-    submodules = ['shapedrawablewithborder', 'util', 'coachmarks', 'arrow', 'bottombar']
+    submodules = ['shapedrawablewithborder', 'util', 'coachmarks', 'arrow', 'bottombar', 'overlay']
 
     // general library release and versioning values
     developerId = 'agramian'
